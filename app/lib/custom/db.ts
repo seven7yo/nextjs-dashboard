@@ -13,26 +13,26 @@ const pool = mysql.createPool({
 });
 
 // 查询函数
-// const query = async (sql: string, values?: any[]): Promise<RowDataPacket[]> => {
-//     const connection = await pool.getConnection();
-//     try {
-//       const [results] = await connection.execute<RowDataPacket[]>(sql, values);
-//       return results;
-//     } finally {
-//       connection.release();
-//     }
-//   };
+const query = async (sql: string, values?: any[]): Promise<RowDataPacket[]> => {
+    const connection = await pool.getConnection();
+    try {
+      const [results] = await connection.execute<RowDataPacket[]>(sql, values);
+      return results;
+    } finally {
+      connection.release();
+    }
+  };
 
 
 // 查询函数
-const query = async (sql: string, values?: any[]): Promise<RowDataPacket[]> => {
-  const connection = await pool.getConnection();
-  try {
-    const [results,Failed] = await connection.execute(sql, values);
-    return results;
-  } finally {
-    connection.release();
-  }
-};
+// const query = async (sql: string, values?: any[]): Promise<RowDataPacket[]> => {
+//   const connection = await pool.getConnection();
+//   try {
+//     const [results,Failed] = await connection.execute(sql, values);
+//     return results;
+//   } finally {
+//     connection.release();
+//   }
+// };
   
 export default query;
